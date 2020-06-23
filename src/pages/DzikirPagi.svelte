@@ -1,6 +1,5 @@
-<script context="module">
-  // import { Link } from "svelte-routing";
-  console.log("----x");
+<script>
+  import { Link } from "svelte-routing";
   import { dzikirs } from "../data.json";
   let currentIdx = 0;
   let dzikir = dzikirs[currentIdx];
@@ -9,7 +8,6 @@
     if (currentIdx > 0) {
       currentIdx = currentIdx - 1;
       dzikir = dzikirs[currentIdx];
-      console.log("-----", dzikir);
     }
   };
 
@@ -17,7 +15,6 @@
     if (currentIdx < dzikirs.length - 1) {
       currentIdx = currentIdx + 1;
       dzikir = dzikirs[currentIdx];
-      console.log("-----", dzikir);
     }
   };
 </script>
@@ -66,8 +63,11 @@
 </style>
 
 <div>
-  <!-- <Link to="/">{'<'} Kembali</Link> -->
-  <h1 class="center">Dzikir Pagi {currentIdx + 1}</h1>
+  <Link to="/">{'<'} Kembali</Link>
+  <h1 class="center">
+    Dzikir Pagi
+    <sup>{currentIdx + 1}</sup>
+  </h1>
   <div id="navigation">
     <div on:click={() => prev()} class="prev" />
     <div on:click={() => next()} class="next" />

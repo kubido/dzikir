@@ -21,7 +21,7 @@
 
 <main>
   <Router url={''}>
-    <Route path="/" component={DzikirPagi} />
+    <Route path="/" component={Home} />
     <Route path="/dzikir-pagi" component={DzikirPagi} />
     <Route component={NotFound} />
   </Router>
