@@ -78,9 +78,9 @@
     {/if}
     <p class="arabic">{dzikir.arabic}</p>
 
+    <sup>dibaca {dzikir.counter}x</sup>
     <div id="detail">
       <i>{dzikir.arabic_read}</i>
-      <sup>dibaca {dzikir.counter}x</sup>
       <br />
       <br />
       <b>Artinya:</b>
