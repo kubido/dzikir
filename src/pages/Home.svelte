@@ -21,9 +21,9 @@
   .button {
     width: 100%;
     box-sizing: border-box;
-    padding: 1em 2em;
+    padding: 4vw;
     margin-bottom: 0.6em;
-    font-size: 3em;
+    font-size: 8vw;
     background: #eee;
     display: block;
   }
