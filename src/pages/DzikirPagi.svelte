@@ -12,14 +12,11 @@
   }
 
   function handleClick(event) {
-    const middleScreenPos = window.innerWidth / 2;
-    if (event.screenX > middleScreenPos) next();
-    if (event.screenX < middleScreenPos) prev();
+    const centerXScreenPos = window.innerWidth / 2;
+    event.clientX > centerXScreenPos ? next() : prev();
   }
 
   function handleMouseDown(event) {
-    console.log(mouseEvent.timer);
-
     mouseEvent.intervalId = setInterval(() => {
       mouseEvent.timer = mouseEvent.timer + 1;
     }, 1);
