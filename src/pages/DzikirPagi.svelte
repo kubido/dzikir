@@ -3,6 +3,35 @@
   import { dzikirs } from "../data.json";
   let currentIdx = 0;
   let dzikir = dzikirs[currentIdx];
+  let mouseEvent = { timer: 0, intervalId: null };
+
+  function handleKeydown(event) {
+    let key = event.key;
+    if (key === "ArrowRight") next();
+    if (key === "ArrowLeft") prev();
+  }
+
+  function handleClick(event) {
+    const middleScreenPos = window.innerWidth / 2;
+    if (event.screenX > middleScreenPos) next();
+    if (event.screenX < middleScreenPos) prev();
+  }
+
+  function handleMouseDown(event) {
+    console.log(mouseEvent.timer);
+
+    mouseEvent.intervalId = setInterval(() => {
+      mouseEvent.timer = mouseEvent.timer + 1;
+    }, 1);
+  }
+
+  function handleMouseUp(event) {
+    let isHoldClick = mouseEvent.timer > 50;
+    if (!isHoldClick) handleClick(event);
+
+    clearInterval(mouseEvent.intervalId);
+    mouseEvent.timer = 0;
+  }
 
   const prev = () => {
     if (currentIdx > 0) {
@@ -62,16 +91,15 @@
   }
 </style>
 
+<svelte:window on:mouseup={handleMouseUp} on:mousedown={handleMouseDown} />
+
 <div>
   <Link to="/">{'<'} Kembali</Link>
   <h1 class="center">
     Dzikir Pagi
     <sup>{currentIdx + 1}</sup>
   </h1>
-  <div id="navigation">
-    <div on:click={() => prev()} class="prev" />
-    <div on:click={() => next()} class="next" />
-  </div>
+
   <div>
     {#if dzikir.header}
       <p class="arabic center">{dzikir.header}</p>
