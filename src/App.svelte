@@ -1,10 +1,6 @@
 <script>
   import { Router, Route } from "svelte-routing";
   import Routes, { routes } from "./config/routes.svelte";
-  // import Home from "./pages/Home.svelte";
-  // import DzikirPagi from "./pages/DzikirPagi.svelte";
-  // import DzikirPetang from "./pages/DzikirPetang.svelte";
-  // import NotFound from "./pages/NotFound.svelte";
 </script>
 
 <style>
