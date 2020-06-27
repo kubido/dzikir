@@ -1,6 +1,8 @@
 <script>
   import { Router, Route } from "svelte-routing";
   import Routes, { routes } from "./config/routes.svelte";
+
+  import "./assets/css/app.css";
 </script>
 
 <style>

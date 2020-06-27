@@ -4,12 +4,17 @@ import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
-import htmlBuild from "./rollup.html-build";
+import html from "@rollup/plugin-html";
+import postcss from "rollup-plugin-postcss";
+
+import htmlOptions from "./rollup.html-build";
 
 const production = !process.env.ROLLUP_WATCH;
 const version = String(
   require("child_process").execSync("git rev-parse --short HEAD")
 ).trim();
+
+const filename = !production ? "bundle" : `bundle.${version}`;
 
 export default {
   input: "src/main.js",
@@ -17,7 +22,7 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: `public/build/bundle.${version}.js`,
+    file: `public/build/${filename}.js`,
   },
   plugins: [
     svelte({
@@ -25,9 +30,9 @@ export default {
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file - better for performance
-      css: (css) => {
-        css.write("public/build/bundle.css");
-      },
+      // css: (css) => {
+      //   css.write("public/build/bundle.css");
+      // },
     }),
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -40,7 +45,12 @@ export default {
     }),
     commonjs(),
     json(),
-    htmlBuild,
+    postcss({
+      extract: true,
+      extract: `${filename}.css`,
+      minimize: true,
+    }),
+    html(htmlOptions),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
@@ -55,7 +65,7 @@ export default {
     production && terser(),
   ],
   watch: {
-    clearScreen: false,
+    clearScreen: true,
   },
 };
 
