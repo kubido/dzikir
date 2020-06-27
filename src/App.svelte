@@ -1,8 +1,10 @@
 <script>
   import { Router, Route } from "svelte-routing";
-  import Home from "./pages/Home.svelte";
-  import DzikirPagi from "./pages/DzikirPagi.svelte";
-  import NotFound from "./pages/NotFound.svelte";
+  import Routes, { routes } from "./config/routes.svelte";
+  // import Home from "./pages/Home.svelte";
+  // import DzikirPagi from "./pages/DzikirPagi.svelte";
+  // import DzikirPetang from "./pages/DzikirPetang.svelte";
+  // import NotFound from "./pages/NotFound.svelte";
 </script>
 
 <style>
@@ -21,8 +23,8 @@
 
 <main>
   <Router url={''}>
-    <Route path="/" component={Home} />
-    <Route path="/dzikir-pagi" component={DzikirPagi} />
-    <Route component={NotFound} />
+    {#each routes as route}
+      <Route {...route} />
+    {/each}
   </Router>
 </main>

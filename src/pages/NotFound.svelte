@@ -1,5 +1,5 @@
 <script context="module">
-
+  import { Link } from "svelte-routing";
 </script>
 
 <style>
@@ -15,5 +15,6 @@
 </style>
 
 <main>
+  <Link to="/">{'<'} Kembali</Link>
   <h1 class="center">404 - Halaman tidak ditemukan</h1>
 </main>
