@@ -8,4 +8,4 @@ list of adhkar & du'a with instastory style navigation
 
 ## Demo
 
-http://dzikir.rifkifauzi.id/
+https://mydzikir.com/
