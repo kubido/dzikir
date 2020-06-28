@@ -18,9 +18,14 @@
     box-sizing: border-box;
     padding: 4vw;
     margin-bottom: 0.6em;
-    font-size: 8vw;
+    font-size: 2em;
     background: #eee;
     display: block;
+  }
+  @media (max-width: 767px) {
+    .button {
+      font-size: 8vw;
+    }
   }
 </style>
 

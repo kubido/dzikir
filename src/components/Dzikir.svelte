@@ -87,7 +87,7 @@
   h1 {
     color: #ff3e00;
     text-transform: uppercase;
-    font-size: 10vw;
+    font-size: 3em;
     font-weight: 100;
   }
 
@@ -96,6 +96,12 @@
   }
   #note * {
     display: block;
+  }
+
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 10vw;
+    }
   }
 </style>
 
