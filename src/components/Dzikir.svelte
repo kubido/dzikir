@@ -49,8 +49,10 @@
 
 <style>
   .arabic {
+    direction: rtl;
     text-align: right;
     font-size: 1.4em;
+    white-space: pre-line;
     line-height: 2em;
   }
   .translation {
@@ -58,6 +60,10 @@
   }
   #detail {
     text-align: left;
+  }
+
+  #detail i {
+    white-space: pre-line;
   }
 
   #navigation {
@@ -88,6 +94,9 @@
   #note {
     margin-top: 4em;
   }
+  #note * {
+    display: block;
+  }
 </style>
 
 <svelte:window on:mouseup={handleMouseUp} on:mousedown={handleMouseDown} />
@@ -104,14 +113,17 @@
       <p class="arabic center">{dzikir.header}</p>
     {/if}
     <p class="arabic">{dzikir.arabic}</p>
-
-    <sup>dibaca {dzikir.counter}x</sup>
+    {#if dzikir.counter}
+      <sup>dibaca {dzikir.counter}x</sup>
+    {/if}
     <div id="detail">
       <i>{dzikir.arabic_read}</i>
       <br />
       <br />
-      <b>Artinya:</b>
-      <p class="translation">{dzikir.translation}</p>
+      {#if dzikir.translation}
+        <b>Artinya:</b>
+        <p class="translation">{dzikir.translation}</p>
+      {/if}
       {#if dzikir.faedah}
         <b>Faedah:</b>
         <p>{dzikir.faedah}</p>

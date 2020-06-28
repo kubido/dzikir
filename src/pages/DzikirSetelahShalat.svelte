@@ -1,8 +1,6 @@
 <script>
-  import { Link } from "svelte-routing";
+  import Dzikir from "../components/Dzikir.svelte";
+  import { dzikirSetelahShalat } from "../data.json";
 </script>
 
-<div>
-  <Link to="/">{'<'} Kembali</Link>
-  <p>Belum tersedia</p>
-</div>
+<Dzikir title="Dzikir Setelah Shalat" dzikirs={dzikirSetelahShalat} />
